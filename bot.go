@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"math"
-	"math/rand"
+//	"math/rand"
 	"os"
 	"os/signal"
 	"strings"
@@ -204,26 +204,27 @@ func messageCreate(s *discordgo.Session, m *discordgo.MessageCreate) {
 	}
 
 	if cmd == "pitam" {
-		guild, err := s.Guild(m.GuildID)
-		if err != nil {
-			return
-		}
+	//	guild, err := s.Guild(m.GuildID)
+	//	if err != nil {
+	//		return
+	//	}
 
-		presences := guild.Presences
-		onlineUsers := []*discordgo.User{}
-		for _, p := range presences {
-			if p.Status == discordgo.StatusOnline {
-				onlineUsers = append(onlineUsers, p.User)
-			}
-		}
-		rs := rand.NewSource(time.Now().UnixNano())
-		r := rand.New(rs)
-		rs = rand.NewSource(time.Now().UnixNano())
-		luckyNumber := r.Intn(len(onlineUsers))
-		luckyMention := onlineUsers[luckyNumber].Mention()
-		reply := fmt.Sprintf("%s imash li nekvi drugi vaprosi?", luckyMention)
+	//	presences := guild.Presences
+	//	onlineUsers := []*discordgo.User{}
+	//	for _, p := range presences {
+	//		if p.Status == discordgo.StatusOnline {
+	//			onlineUsers = append(onlineUsers, p.User)
+	//		}
+	//	}
+	//	rs := rand.NewSource(time.Now().UnixNano())
+	//	r := rand.New(rs)
+	//	rs = rand.NewSource(time.Now().UnixNano())
+	//	luckyNumber := r.Intn(len(onlineUsers))
+	//	luckyMention := onlineUsers[luckyNumber].Mention()
+	//	reply := fmt.Sprintf("%s imash li nekvi drugi vaprosi?", luckyMention)
 
-		s.ChannelMessageSend(m.ChannelID, reply)
+	//	s.ChannelMessageSend(m.ChannelID, reply)
+		s.ChannelMessageSend(m.ChannelID, "pitai pak")
 		return
 	}
 }
